@@ -58,6 +58,7 @@ function clone(repo, branch) --> bool
                 local h = fs.open(curdir .. fname, "w")
                 h.write(content)
                 h.close()
+            end
         end
     end
 end

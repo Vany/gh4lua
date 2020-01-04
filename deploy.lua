@@ -3,7 +3,7 @@ local prefix = "https://raw.githubusercontent.com/"
 -- string -> string
 function _GET(path)
     local handle = http.get(prefix .. path)
-    if handle.getResponseCode() ~= 200 then
+    if handle ==nil or handle.getResponseCode() ~= 200 then
         return "", false
     end
     local content = handle.readAll()

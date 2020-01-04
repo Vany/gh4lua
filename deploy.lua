@@ -22,7 +22,7 @@ function clone(repo, branch) --> bool
     if branch == nil then
         branch = "master"
     end
-  
+
     if repo == nil then
         if fs.exists(curdir .. listname) then 
             h = fs.open(curdir .. listname, "r")
@@ -68,4 +68,11 @@ local s, ok = _GET("Vany/gh4lua/master/README.md")
 print(s, ok)
 end
 
-clone()
+local args = {...}
+clone(args[1])
+
+
+
+-- TODO Make it module
+-- TODO make separate executive script
+-- TODO make installation script that install path in autorun

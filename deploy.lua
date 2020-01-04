@@ -3,7 +3,6 @@ local prefix = "https://raw.githubusercontent.com/"
 -- string -> string
 function _GET(path)
     local handle = http.get(prefix .. path)
-    print(prefix .. path)
     if handle.getResponseCode() ~= 200 then
         return "", false
     end
@@ -44,6 +43,22 @@ function clone(repo, branch) --> bool
 
     if not ok then 
         return (print("repository have no "..listname.." in the repo ".. repo) and false)
+    end
+
+    local first = true
+    for fname in string.gmatch(filelist, "([^\n]+)") do
+        if first then 
+            first = false 
+        else
+            print("Retrieving: ", fname)
+            local content, ok = _GET(repopath .. fname)
+            if not ok then 
+                print("..unexisted")
+            else
+                local h = fs.open(curdir .. fname, "w")
+                h.write(content)
+                h.close()
+        end
     end
 end
 

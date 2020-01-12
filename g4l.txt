@@ -1,4 +1,5 @@
 Vany/gh4lua master
+g4l.txt
 deploy.lua
 test.vaw
 test2/test3.lua

@@ -5,9 +5,9 @@ local name = os.getComputerLabel()
 
 modem.open(channel)
 
-local counter = 0
+local state = {}
+
 while true do
-	modem.transmit(channel, channel, name..":tick"..counter)
-	sleep(pause)
-	print("Tick")
+	nil, nil, nil, msg, nil = os.pull_event("modem_message")
+	print(msg)
 end

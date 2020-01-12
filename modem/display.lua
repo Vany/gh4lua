@@ -8,6 +8,6 @@ modem.open(channel)
 local state = {}
 
 while true do
-	nil, nil, nil, msg, nil = os.pull_event("modem_message")
+	local _, _, _, _, msg, _ = os.pullEvent("modem_message")
 	print(msg)
 end

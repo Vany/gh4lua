@@ -8,8 +8,10 @@ modem.open(channel)
 local state = {}
 
 while true do
+	term.clear()
+	term.setCursorPos(1,1)
 	local _, _, _, _, msg, _ = os.pullEvent("modem_message")
-	local _, _, k, v = string.find(s, "([^:]+:[^:]+):([^:]+)")
+	local _, _, k, v = string.find(msg, "([^:]+:[^:]+):([^:]+)")
 	state[k] = v
 	for k,v in pairs(state) do
 		print(k,":", v)

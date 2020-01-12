@@ -8,7 +8,7 @@ modem.open(channel)
 
 local counter = 0
 while true do
-	local fill = bat.getMaxEnergyStored() / bat.getEnergyStored()
+	local fill = bat.getEnergyStored() / bat.getMaxEnergyStored()
 	modem.transmit(channel, channel, name..":Fill:".. fill)
 	modem.transmit(channel, channel, name..":Feed:".. bat.getTransferPerTick())	
 	sleep(pause)

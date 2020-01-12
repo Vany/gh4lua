@@ -4,3 +4,4 @@ test.vaw
 test2/test3.lua
 test/unexistent.lua
 checkerfloor.lua
+modem/ticker.lua

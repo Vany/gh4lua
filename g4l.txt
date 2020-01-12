@@ -7,3 +7,4 @@ test/unexistent.lua
 checkerfloor.lua
 modem/ticker.lua
 modem/display.lua
+modem/energyreader.lua

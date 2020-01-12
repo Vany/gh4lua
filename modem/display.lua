@@ -9,5 +9,9 @@ local state = {}
 
 while true do
 	local _, _, _, _, msg, _ = os.pullEvent("modem_message")
-	print(msg)
+	local _, _, k, v = string.find(s, "([^:]+:[^:]+):([^:]+)")
+	state[k] = v
+	for k,v in pairs(state) do
+		print(k,":", v)
+	end
 end

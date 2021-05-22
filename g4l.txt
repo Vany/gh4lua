@@ -8,6 +8,8 @@ checkerfloor.lua
 modem/ticker.lua
 modem/display.lua
 modem/energyreader.lua
+modem/inventorysize.lua
+modem/reactor.lua
 n/cake.lua
 n/livingcircle.lua
 n/starmetal.lua

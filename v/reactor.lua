@@ -6,6 +6,8 @@ v.ft["forcestop"] = function()
  print("Force stoped")
 end
 
+v:SendStat("WRL", "alive" )
+
 while true do
 	os.pullEvent("redstone")
 	local left = rs.getInput("left")

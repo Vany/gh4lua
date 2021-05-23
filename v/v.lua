@@ -22,6 +22,7 @@ function v:RefillSlot(slot) -- refill selectrf slot
 	end
 	n = n + 1
     end
+    turtle.select(slot)
 end
 
 

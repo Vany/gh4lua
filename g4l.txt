@@ -2,6 +2,8 @@ Vany/gh4lua master
 g4l.txt
 deploy.lua
 
+
+startup.lua
 v/v.lua
 v/run.lua
 v/base.lua

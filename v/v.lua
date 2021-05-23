@@ -19,8 +19,8 @@ function v:RefillSlot(slot) -- refill selectrf slot
 	    if turtle.compareTo(slot) then
 		turtle.transferTo(slot,64)
 	    end
-	    slot = slot + 1
 	end
+	n = n + 1
     end
 end
 
@@ -31,7 +31,7 @@ function v:FindChest()
 	if c ~= nil and c.size ~= nil and c.list ~= nil then
 		local used = 0
 		for _ in pairs(c.list()) do used = used + 1 end
-		if c.size == 27 and used == 0 then return true end
+		if c.size() == 27 and used == 0 then return true end
 	end
 	turtle.turnRight()
     end

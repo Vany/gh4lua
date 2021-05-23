@@ -1,6 +1,10 @@
 local forcestop = false
 
-ftable["forcestop"] = function() forcestop=true end
+v.ft["forcestop"] = function()
+ forcestop=true
+ rs.setOutput("back", false)
+ print("Force stoped")
+end
 
 while true do
 	os.pullEvent("redstone")

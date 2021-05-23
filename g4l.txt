@@ -9,3 +9,7 @@ v/run.lua
 v/base.lua
 v/ticker.lua
 v/reactor.lua
+v/storage.lua
+v/cake.lua
+v/entropinium.lua
+v/starmetal.lua

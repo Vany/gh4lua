@@ -4,6 +4,10 @@ v = {
     ["cmdchan"] = 1002,
     ["modem"]   = peripheral.find("modem"),
     ["name"]    = os.getComputerLabel(),
+    ["ft"] = {
+	["stop"] = function() exit() end,
+	["yell"] = function() print("YELL") end,
+    }
 }
 
 
@@ -43,14 +47,9 @@ end
 
 
 function v:Run()
+    print("==> ", self.name, " <==")
     require(self.name)
 end
-
-
-local ftable = {
-    ["stop"] = function() exit() end,
-    ["yell"] = function() print("YELL") end,
-}
 
 
 function Listen()
@@ -60,8 +59,7 @@ function Listen()
 	if chan ~= v.channel then print("]",v.name,"]" , chan, " - ", msg) end
 	if chan == v.cmdchan then
 	    local _, _, comp, command = string.find(msg, "^([^ ]+) (.+)$")
-        print("]]", comp, "]", command)
-	    if comp == v.name then ftable[command]() end
+	    if comp == v.name then v.ft[command]() end
 	end
     end
 end

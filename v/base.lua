@@ -1,11 +1,8 @@
 local state = {}
 local color = {}
-
 function Display()
     local m = peripheral.find("monitor")
     v.modem.open(v.channel)
-    
-    print(m)
 
     while true do
         local _, _, channel, _, msg, _ = os.pullEvent("modem_message")
@@ -31,22 +28,6 @@ end
 
 local history = {}
 function Commands()
---[[
-    local completion = require "cc.shell.completion"
-    local tcomps = {}
-    for k in pairs(state) do
-	local c = string.find(k, "^([^:]+):")
-	if c ~= nil then tcomps[c] = 1 end
-    end
-
-    local comps = {"base"}
-    for k in pairs(tcomps) do table.insert(comps, k) end
-
-    local complete = completion.build(
-	{ completion.choice, comps },
-	{ completion.choice, { "stop", "reboot", "yell" } }
-    )
-]]--
     while true do
 	write("> ")
 	local cmd = read(nil, history, nil, "")

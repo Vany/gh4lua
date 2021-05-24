@@ -57,7 +57,6 @@ function Listen()
     v.modem.open(v.cmdchan)
     while true do
 	local _, _, chan, _, msg, _ = os.pullEvent("modem_message")
-	if chan ~= v.channel then print("]",v.name,"]" , chan, " - ", msg) end
 	if chan == v.cmdchan then
 	    local _, _, comp, command = string.find(msg, "^([^ ]+) (.+)$")
 	    if comp == v.name then v.ft[command]() end

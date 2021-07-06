@@ -11,6 +11,15 @@ v = {
 }
 
 
+function v:BucketFuel(slot)
+    if turtle.getFuelLimit() < turtle.getFuelLevel() * 1.2 then return end
+    turtle.select(slot)
+    turtle.suck(1)
+    turtle.refuel(1)
+    turtle.drop(1)
+end
+
+
 function v:RefillSlot(slot) -- refill selectrf slot
     local n = 1
     while turtle.getItemCount(slot) < 64 and n < 15 do

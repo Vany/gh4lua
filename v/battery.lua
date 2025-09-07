@@ -12,7 +12,12 @@ function EnderCell()
     return energy / capacity
 end
 
+local treshhold = 25
+
 while true do
-    v:SendStat("battery", math.floor(EnderCell() * 100) .. "%")
-    sleep(5)
+    local percentage = math.floor(EnderCell() * 100)
+    local color = percentage < 50 and "red" or "green"
+    if percentage < treshhold then color = "alarm" end
+    v:SendStat("HAVE", percentage .. "%", color)
+    sleep(percentage < treshhold and 1 or 5)
 end

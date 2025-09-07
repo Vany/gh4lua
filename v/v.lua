@@ -53,7 +53,7 @@ function v:FindChest()
 end
 
 function v:SendStat(name, value, color)
-    if color == nil then color = colors.white end
+    if color == nil then color = "" end
     self.modem.transmit(self.channel, self.channel, self.name .. ":" .. name .. ":" .. value .. ":" .. color)
 end
 

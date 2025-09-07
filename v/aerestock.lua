@@ -76,6 +76,8 @@ function KeepCrafted:craft()
 end
 
 local keep = {
+    --    stack("mekanism:energy_tablet", 64),
+    stack("ftbmaterials:steel_ingot", 4096),
     stack("ae2:calculation_processor", 1024),
     stack("ae2:logic_processor", 1024),
     stack("ae2:engineering_processor", 1024),
@@ -87,45 +89,33 @@ local keep = {
     stack("megacells:accumulation_processor", 128),
 }
 
-function Request()
-    print("Started...")
-    v:SendStat("ERROR", "-", "black") -- cleanup error line
-    local total, thisCycle, thisCycleErrors = 0, 0, 0
-    while true do
-        local error = ""
-        for _, item in ipairs(keep) do
-            if item:needCraft() and haveFreeCPU() then
-                if item:craft() then
-                    thisCycle = thisCycle + 1
-                    print("ok")
-                else
-                    print("not ok")
-                    thisCycleErrors = thisCycleErrors + 1
-                    error = item.name
-                end
+print("Started...")
+v:SendStat("ERROR", "-", "black") -- cleanup error line
+local total, thisCycle, thisCycleErrors = 0, 0, 0
+while true do
+    local error = ""
+    for _, item in ipairs(keep) do
+        if item:needCraft() and haveFreeCPU() then
+            if item:craft() then
+                thisCycle = thisCycle + 1
+                print("ok")
+            else
+                print("not ok")
+                thisCycleErrors = thisCycleErrors + 1
+                error = item.name
             end
-            sleep(0.1)
         end
-
-        if error ~= "" then
-            v:SendStat("HAVE", error .. "!", "red")
-        else
-            v:SendStat("HAVE", total .. " " .. thisCycle .. "!", "green")
-        end
-
-        print("...")
-        sleep(1)
+        sleep(0.1)
     end
-end
 
-function Response()
-    while true do
-        print("Respon")
-        local event, error, id, message = os.pullEvent("rs_crafting")
-        print("A crafting update occurred for Job #" .. id, textutils.serialize(event), message, error)
+    if error ~= "" then
+        v:SendStat("HAVE", error .. "!", "red")
+    else
+        v:SendStat("HAVE", total .. " " .. thisCycle .. "!", "green")
     end
-end
 
-parallel.waitForAny(Request, Response)
+    print("...")
+    sleep(1)
+end
 
 return nil

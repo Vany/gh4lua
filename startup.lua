@@ -1,1 +1,1 @@
-shell.run("v/run")
+shell.run("g/v/run")

@@ -2,13 +2,18 @@ local state = {}
 local color = {}
 
 local crs = {
-    [""]      = colors.white,
-    ["1"]     = colors.white,
-    ["white"] = colors.white,
-    ["green"] = colors.green,
-    ["red"]   = colors.red,
-    ["alarm"] = colors.red,
+    [""]       = colors.white,
+    ["1"]      = colors.white,
+    ["white"]  = colors.white,
+    ["green"]  = colors.green,
+    ["yellow"] = colors.yellow,
+    ["red"]    = colors.red,
+    ["black"]  = colors.black,
+    ["alarm"]  = colors.red,
 }
+
+
+-- TODO if message is empty remoe line from list.
 
 function Display()
     local m = peripheral.find("monitor")

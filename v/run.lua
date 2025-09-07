@@ -6,4 +6,4 @@ end
 
 parallel.waitForAny(Run, Listen)
 
-exit()
+return nil
